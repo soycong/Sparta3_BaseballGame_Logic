@@ -21,6 +21,39 @@ class BaseballGame {
     
     
     func start() {
+        print("환영합니다! 원하는 번호를 입력해주세요.")
+        print("1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기")
+        
+        var insertNum = Int(readLine()!)!
+        
+        switch insertNum {
+        case 1:
+            game()
+        case 2:
+            let game = BaseballGame()
+            game.start()
+        case 3:
+            let game = BaseballGame()
+            game.start()
+        default:
+            let game = BaseballGame()
+            game.start()
+        }
+    }
+    
+    func makeAnswer() {
+        // 정답 생성
+        /*for i in 0...2 {
+         if let num = numArr.randomElement() {
+         randomNums.append(num)
+         numArr.remove(at: numArr.firstIndex(of: num)!)
+         } else {
+         print("nil")
+         }
+         }*/
+    }
+    
+    func game() {
         makeAnswer()
         
         while true {
@@ -39,14 +72,14 @@ class BaseballGame {
             }
             print(input)
             
-            for i in 0...2 {
+            for i in input {
                 //스트라이크 계산
-                if input[i] == randomNums[i] {
+                if i == randomNums[i] {
                     strike = strike + 1
                 }
                 
                 //볼 계산
-                if randomNums.contains(input[i]) == true {
+                if randomNums.contains(i) == true {
                     ball = ball + 1
                 }
             }
@@ -68,17 +101,5 @@ class BaseballGame {
             print("\(strike) Strike \(ball) Ball")
         }
         recordArr.append(record)
-    }
-    
-    func makeAnswer() {
-        // 정답 생성
-        /*for i in 0...2 {
-         if let num = numArr.randomElement() {
-         randomNums.append(num)
-         numArr.remove(at: numArr.firstIndex(of: num)!)
-         } else {
-         print("nil")
-         }
-         }*/
     }
 }
