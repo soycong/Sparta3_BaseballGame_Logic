@@ -4,6 +4,7 @@
 //
 //  Created by seohuibaek on 11/7/24.
 //
+import Foundation
 
 class RecordManager {
     var records: [Int] = [] // 게임 기록을 저장할 배열

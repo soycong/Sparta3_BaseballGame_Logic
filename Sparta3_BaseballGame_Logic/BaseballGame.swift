@@ -38,25 +38,34 @@ class BaseballGame {
                 default:
                     print("올바르지 않은 입력입니다. 1, 2, 3 중에서 선택해주세요.")
                 }
-            } else {
-                print("숫자를 입력해주세요.")
             }
         }
     }
     
     func makeAnswer() {
         // 정답 생성
-        for _ in 0...2 {
-            if let num = numArr.randomElement() {
-                randomNums.append(num)
-                numArr.remove(at: numArr.firstIndex(of: num)!)
+        for i in 0...2 {
+            if i == 0 {
+                // 첫 번째 숫자는 0을 제외한 숫자 중에서 선택합니다.
+                let nonZeroNumbers = numArr.filter { $0 != 0 }
+                if let num = nonZeroNumbers.randomElement() {
+                    randomNums.append(num)
+                    numArr.remove(at: numArr.firstIndex(of: num)!)
+                }
+            } else {
+                // 이후 숫자는 제한 없이 선택합니다.
+                if let num = numArr.randomElement() {
+                    randomNums.append(num)
+                    numArr.remove(at: numArr.firstIndex(of: num)!)
+                }
             }
         }
     }
     
     func gameMode() {
         //makeAnswer()
-        
+        record = 0
+
         strike = 0
         ball = 0
         
@@ -70,8 +79,14 @@ class BaseballGame {
                 //compactMap{ Int($0) }를 통해 숫자만 입력되게 함
                 input = line.split(separator: "").compactMap{ Int($0) }
                 
+                if input.count != 3 || input[0] == 0 {
+                    print("올바르지 않은 입력 값 입니다.")
+                    continue
+                }
+                
                 if Set(input).count < 3 { //중복 값 입력한 경우, 문자가 있어 compactMap을 통해 지워진 경우
                     print("올바르지 않은 입력 값 입니다.")
+                    continue
                 }
             }
             print(input)
@@ -86,7 +101,7 @@ class BaseballGame {
                 }
                 
                 //볼 계산
-                if randomNums.contains(input[i]) == true {
+                if randomNums.contains(input[i]) {
                     ball += 1
                 }
             }
