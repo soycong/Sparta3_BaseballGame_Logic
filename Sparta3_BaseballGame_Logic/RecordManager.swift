@@ -18,6 +18,7 @@ class RecordManager {
     func showRecords() {
         if records.isEmpty { //배열이 비었을 경우
             print("저장된 게임 기록이 없습니다.")
+            
         } else {
             print("게임 기록:")
             for (index, record) in records.enumerated() {

@@ -10,7 +10,7 @@ import Foundation
 class BaseballGame {
 
     var input : [Int] = [] //사용자가 입력할 숫자 3자리를 담는 배열
-    var randomNums : [Int] = [1,2,3] // 정답 숫자 3자리를 담는 배열
+    var randomNums : [Int] = [] // 정답 숫자 3자리를 담는 배열
         
     var record = 0 // 각 게임 회차마다 횟수를 담을 배열
     let recordManager = RecordManager() // RecordManager의 인스턴스 생성
@@ -40,6 +40,7 @@ class BaseballGame {
     //정답 생성 함수
     func makeAnswer() {
         var numArr = [0,1,2,3,4,5,6,7,8,9] // 정답 숫자를 만들 때 쓰이는 배열
+        randomNums = [] //초기화
 
         for i in 0...2 {
             if i == 0 { // 1번째 정답 숫자 생성
@@ -59,14 +60,14 @@ class BaseballGame {
     }
     
     func gameMode() {
-        //makeAnswer()
+        makeAnswer()
         record = 0
 
         while true {
             var strike = 0
             var ball = 0
             
-            record = record + 1
+            record = record + 1 // 시도 횟수 증가
             
             print("숫자를 입력하세요.")
             
@@ -81,9 +82,7 @@ class BaseballGame {
                     continue
                 }
             }
-
-            print(input)
-
+            
             for i in 0..<input.count {
                 //스트라이크 계산
                 if input[i] == randomNums[i] {
@@ -98,27 +97,21 @@ class BaseballGame {
             ball -= strike // 볼 카운트에서 스트라이크 값 제외
             
             //결과값 출력
-            if strike == 0 && ball > 0 {
+            if strike == 3 {
+                print("정답입니다!")
+                return
+            } else if strike == 0 && ball > 0 {
                 print("\(ball) Ball")
                 
-            } else if strike > 0 && ball == 0 {
+            } else if strike != 0 && ball == 0 {
                 print("\(strike) Strike")
+                
+            } else if strike != 0 && ball != 0 {
+                print("\(strike) Strike \(ball) Ball")
                 
             } else if strike == 0 && ball == 0 {
                 print("Nothing")
-                
-            } else if strike == 3 {
-                print("정답입니다!")
-                return
             }
-            
-            print(input)
-            print(randomNums)
-            
-            print(strike)
-            print(ball)
-            
-            print("\(strike) Strike \(ball) Ball")
         }
     }
 }
