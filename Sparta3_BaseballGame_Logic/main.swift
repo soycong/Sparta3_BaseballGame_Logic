@@ -6,5 +6,6 @@
 //
 import Foundation
 
+// BaseballGame 클래스의 인스턴스를 생성하여 게임 시작
 let game = BaseballGame()
 game.start()
