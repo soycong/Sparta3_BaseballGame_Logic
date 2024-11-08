@@ -96,7 +96,7 @@ class BaseballGame {
             }
             ball -= strike // 볼 카운트에서 스트라이크 값 제외
             
-            //결과값 출력
+            //힌트 출력
             if strike == 3 {
                 print("정답입니다!")
                 return
