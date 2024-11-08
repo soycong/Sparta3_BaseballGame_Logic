@@ -7,7 +7,7 @@
 - Lv.4: 프로그램을 시 안내문구 생성 (1. 게임 시작, 2. 게임 기록 , 3. 종료)
 - Lv.5: 게임 기록 보여주기
 - Lv.6: 프로그램 종료하기
-*모든 예외 처리 필수!
+- *모든 예외 처리 필수!
 
 ## Stacks
 <img src="https://img.shields.io/badge/Swift-F05138?style=flat&logo=swift&logoColor=white"/></a>
