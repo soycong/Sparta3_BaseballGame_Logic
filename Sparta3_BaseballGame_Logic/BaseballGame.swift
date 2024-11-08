@@ -61,6 +61,7 @@ class BaseballGame {
     
     func gameMode() {
         makeAnswer()
+        print(randomNums)
         record = 0
 
         while true {
@@ -87,30 +88,24 @@ class BaseballGame {
                 //스트라이크 계산
                 if input[i] == randomNums[i] {
                     strike += 1
+                    continue
                 }
                 
                 //볼 계산
                 if randomNums.contains(input[i]) {
                     ball += 1
+                    continue
                 }
             }
-            ball -= strike // 볼 카운트에서 스트라이크 값 제외
             
             //힌트 출력
             if strike == 3 {
                 print("정답입니다!")
                 return
-            } else if strike == 0 && ball > 0 {
-                print("\(ball) Ball")
-                
-            } else if strike != 0 && ball == 0 {
-                print("\(strike) Strike")
-                
-            } else if strike != 0 && ball != 0 {
-                print("\(strike) Strike \(ball) Ball")
-                
             } else if strike == 0 && ball == 0 {
                 print("Nothing")
+            } else {
+                print("\(strike) Strike \(ball) Ball")
             }
         }
     }
