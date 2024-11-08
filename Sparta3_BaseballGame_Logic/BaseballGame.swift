@@ -61,7 +61,6 @@ class BaseballGame {
     
     func gameMode() {
         makeAnswer()
-        print(randomNums)
         record = 0
 
         while true {
