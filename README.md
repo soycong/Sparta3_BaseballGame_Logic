@@ -35,6 +35,9 @@ ex) n번째 게임: 시도 횟수 - N
 ### C. 종료하기
 이전 기록 초기화 및 게임 종료가 진행된다.
 
+## 작업 기간
+- 2024.11.06~2024.11.08
+
 ## Stacks
 <img src="https://img.shields.io/badge/Swift-F05138?style=flat&logo=swift&logoColor=white"/></a>
 <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white"/></a>
